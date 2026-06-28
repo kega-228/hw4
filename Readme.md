@@ -102,7 +102,7 @@ Set-Cookie: sessionid=abc123; Expires=Mon, 28 Jun 2027 9:43:00 GMT; Domain=httpb
 
 Знову сервер відключено
 
-![503 Service Temporarily Unavailable](<Screenshot 2026-06-28 094632.png>)
+![503 Service Temporarily Unavailable](<Screenshot 2026-06-28 112215.png>)
 
 
 
