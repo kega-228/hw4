@@ -9,23 +9,14 @@
 1. Таблиця
 
 | Атрибут    | Призначення                                       | Приклад значення            |
-
 | ---------- | ------------------------------------------------- | --------------------------- |
-
 | Name=Value | Ім'я та значення cookie                           | `sessionid=abc123`          |
-
 | Domain     | Для яких доменів відправляти cookie               | `example.com`               |
-
 | Path       | Для яких шляхів відправляти cookie                | `/api/v1`                   |
-
 | Expires    | Коли закінчується дійсність cookie                | `Wed, 22 May 2027 10:00:00` |
-
 | Max-Age    | Кількість секунд, що живе cookie                  | `3600`                      |
-
 | HttpOnly   | Захищає від атак XSS (Cross-Site Scripting)       | `HttpOnly`                  |
-
 | Secure     | Cookie надсилається лише через HTTPS              | `Secure`                    |
-
 | SameSite   | чи надсилається cookie при cross-site запитах     | `Strict`                    |
 
 \## Питання
