@@ -83,7 +83,7 @@
 
 Не виходить перевірить
 
-!\[503 Service Temporarily Unavailable](Screenshot 2026-06-28 094632.png)
+
 
 
 
@@ -117,8 +117,6 @@
 
 
 Знову сервер відключено
-
-!\[503 Service Temporarily Unavailable](Screenshot 2026-06-28 112215.png)
 
 
 
