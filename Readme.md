@@ -1,10 +1,10 @@
-\# Zadacha 1
+# Zadacha 1
 
 1. cookie - текстові фрагменти інформації у вигляді ключ=значення, які сервер відсилає користувачу, для того щоб запам'ятати його. Це потрібно для того щоб не приходилося входити заново кожен новий захід на сайт
 2. Set-Cookie браузер надсилає клієнту для збереження а Cookie клієнт відправляє для підтвердження.
 3. Так, cookies працюватиме на всіх программах, що відправляють HTTP requests та можуть зберігати файли. Curl сам не зберігає кукі файли, для цього треба написати `-c {filename}` щоб файл сберігся до cookie jar, а щоб витягнути треба написати `-b {filename}`
 
-\# Zadacha 2
+# Zadacha 2
 
 1. Таблиця
 
@@ -19,101 +19,94 @@
 | Secure     | Cookie надсилається лише через HTTPS              | `Secure`                    |
 | SameSite   | чи надсилається cookie при cross-site запитах     | `Strict`                    |
 
-\## Питання
+## Питання
 
 1. Session Cookies зберігаються до закриття браузера, а Persistent Cookies продовжують жити
 2. HttpOnly Забороняє його використовувати через JavaScript задля захисту від XSS атак
 3. те ж саме що й питання 2
 4. HttpOnly Захищає від атак XSS (Cross-Site Scripting) а Secure від Man-in-the-Middle, коли зловмисник через свою мережу намагається відслідкувати ваш Cookie
 
-\# Zadacha 3
+# Zadacha 3
 
-1\. \*\*Session cookie\*\* (видалиться при закритті браузера, доступна тільки для HTTPS, недоступна JavaScript):
-
-
-
-&#x20;   ```
-
-&#x20;   Set-Cookie: sessionid=abc123; HttpOnly; Secure; SameSite=Strict
-
-&#x20;   ```
+1. **Session cookie** (видалиться при закритті браузера, доступна тільки для HTTPS, недоступна JavaScript):
 
 
 
-2\. \*\*Persistent cookie для всього домена\*\* (дійсна 30 днів):
+```
+
+Set-Cookie: sessionid=abc123; HttpOnly; Secure; SameSite=Strict
+
+```
 
 
 
-&#x20;   ```
-
-&#x20;   Set-Cookie: sessionid=abc123; Expires=Tue, 28 Jul 2026 9:38:00 GMT; Domain=httpbin.org; Path=/
-
-&#x20;   ```
+2. **Persistent cookie для всього домена** (дійсна 30 днів):
 
 
 
-3\. \*\*Cookie тільки для шляху `/api`\*\* (дійсна 1 день):
+```
+
+Set-Cookie: sessionid=abc123; Expires=Tue, 28 Jul 2026 9:38:00 GMT; Domain=httpbin.org; Path=/
+
+```
 
 
 
-&#x20;   ```
-
-&#x20;   Set-Cookie: sessionid=abc123; Max-Age=86400; Domain=httpbin.org; Path=/api; SameSite=Strict
-
-&#x20;   ```
+3. **Cookie тільки для шляху `/api`** (дійсна 1 день):
 
 
 
-4\. \*\*Cross-site cookie для аналітики\*\* (дійсна 1 рік, доступна з усіх доменів):
+```
 
-&#x20;   ```
+Set-Cookie: sessionid=abc123; Max-Age=86400; Domain=httpbin.org; Path=/api; SameSite=Strict
 
-&#x20;   Set-Cookie: sessionid=abc123; Expires=Mon, 28 Jun 2027 9:43:00 GMT; Domain=httpbin.org; Path=/; SameSite=None; Secure
+```
 
-&#x20;   ```
+
+
+4. **Cross-site cookie для аналітики** (дійсна 1 рік, доступна з усіх доменів):
+
+```
+
+Set-Cookie: sessionid=abc123; Expires=Mon, 28 Jun 2027 9:43:00 GMT; Domain=httpbin.org; Path=/; SameSite=None; Secure
+
+```
 
 Не виходить перевірить
 
-!\[503 Service Temporarily Unavailable](<Screenshot 2026-06-28 094632.png>)
+![503 Service Temporarily Unavailable](<Screenshot 2026-06-28 094632.png>)
 
 
 
-\## Питання
+## Питання
 
 1. на безпеку впливають атрибути Secure, HttpOnly та SameSite
 2. тому що в /api/users є /api, це значить що воно підходить
 
 
 
-\# Zadacha 5
+# Zadacha 5
 
 ТАблиця:
 
 | Директива | Призначення | Приклад |
-
 | --------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- |
-
 | max-age=N | Кешуй на N секунд | `max-age=3600` (1 година) |
-
 | no-cache | Кешуй, але обов'язково перевіряй свіжість на сервері перед кожним використанням | `no-cache` (вимагає ETags/If-None-Match) |
-
 | no-store | заборонено зберігати відповідь у будь-якому кеші| `no-store` (паролі, банківські дані) |
-
 | public | Відповідь можна кешувати будь-де | `public, max-age=31536000` (малюнки, CSS)|
-
 | private | Відповідь призначена тільки для конкретного користувача | `private, max-age=600` (особистий кабінет) |
-
 | must-revalidate | Якщо термін кешу збіг, старі дані використовувати заборонено — тільки запит на сервер | `max-age=60, must-revalidate` |
 
 
 
 Знову сервер відключено
 
-!\[503 Service Temporarily Unavailable](<Screenshot 2026-06-28 094632.png>)
+![503 Service Temporarily Unavailable](<Screenshot 2026-06-28 094632.png>)
 
 
 
-\# Питання
+## Питання
 
 1. Що кеш буде дійсним годину і не буде оновлюватися
 2. no-cache зберігає, але перевіряє актуальність no-store не зберігає
